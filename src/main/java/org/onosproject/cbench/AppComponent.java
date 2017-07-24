@@ -105,11 +105,6 @@ public class AppComponent {
      */
     private ExecutorService executorService;
 
-    /**
-     * Future for handler thread.
-     */
-    private Future<?> handlerFuture = CompletableFuture.completedFuture(null);
-
     boolean hasBegin = false;
 
     boolean hasEnd = false;
@@ -282,10 +277,9 @@ public class AppComponent {
                             deviceIdList.add(deviceId);
                         }
                         log.info("{} devices: {}", deviceIdList.size(), deviceIdList);
-                        if (handlerFuture.isDone()) {
-                            handlerFuture  = executorService.submit(new FlowRuleInstaller(deviceIdList, AVERAGE_COUNT, BATCH_SIZE));
-                            log.info("flow rule installer started: {}", executorService);
-                        }
+
+                        executorService.execute(new FlowRuleInstaller(deviceIdList, AVERAGE_COUNT, BATCH_SIZE));
+                        log.info("flow rule installer started: {}", executorService);
                     }
                 }
             }
