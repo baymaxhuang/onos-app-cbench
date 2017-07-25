@@ -139,7 +139,7 @@ public class AppComponent {
 
         if (executorService != null) {
             log.info("flow rule installer shutdown: {}", executorService);
-            executorService.shutdown();
+            executorService.shutdownNow();
         }
 
         log.info("Stopped");
@@ -358,10 +358,10 @@ public class AppComponent {
                                 .setOutput(portNumber).build();
                         size = 0;
                     }
-                } catch (Exception e) {
+                } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
-                    // interrupted. gracefully shutting down
-                    log.warn("exception occur!");
+                    // interrupted, shutdown the thread
+                    log.info("Thread shutdown: {}", Thread.currentThread().getName());
                     return;
                 }
 
@@ -390,7 +390,7 @@ public class AppComponent {
                                 hasEnd = true;
                                 if (executorService != null) {
                                     log.info("flow rule installer shutdown: {}", executorService);
-                                    executorService.shutdown();
+                                    executorService.shutdownNow();
                                 }
                             }
                         }
