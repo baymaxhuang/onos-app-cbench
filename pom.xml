@@ -18,7 +18,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.onosproject</groupId>
-    <artifactId>onos-app-cbench</artifactId>
+    <artifactId>onos-app-of-cbench</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
@@ -28,7 +28,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <onos.version>1.11.0-SNAPSHOT</onos.version>
-        <onos.app.name>org.onosproject.cbench</onos.app.name>
+        <onos.app.name>org.onosproject.of.cbench</onos.app.name>
         <onos.app.title>Cbench Test App</onos.app.title>
         <onos.app.origin>INFINITELAB USTC</onos.app.origin>
         <onos.app.category>default</onos.app.category>
